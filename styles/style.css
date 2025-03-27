@@ -9,10 +9,47 @@ body {
 
 /* Header i navigacija */
 header {
-    background: #222;
+    background: #110f33;
     color: white;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box; 
 }
+
+/* Animacija teksta u headeru */
+
+header h1 {
+    font-size: 40px;
+    animation: moveText 20s linear infinite; /* 20s - trajanje animacije kako bi se slova kretala sporije*/
+}
+
+@keyframes moveText {
+    0% {
+        transform: translateX(-100%); /* Početak skroz lijevo */
+        opacity: 1;
+    }
+    45% {
+        transform: translateX(100%); /* Kretnja prema desnom rubu */
+        opacity: 1;
+    }
+    46% {
+        opacity: 0; /* Sakriven tekst */
+    }
+    56% {
+        transform: translateX(-100%); /* Tekst se vraća na početak */
+         opacity: 0;
+    }
+    60% {
+        opacity: 1; /* Ponovo prikazivanje teksta */
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+}
+
+
+/* U nastavku je dodan css navigacije - implementiran padajući izbornik i skrivanje navigacije */
 
 .menu{
     width: max-content;
@@ -35,7 +72,7 @@ nav {
 }
 
 ul{
-    list-style-type: none;
+    list-style-type: none; /* Uklonjene točke iz liste */
     margin-right: 20%;
 
 }
@@ -48,7 +85,7 @@ li{
 .menu:hover + nav,
 nav:hover{
     display: block;
-    position: fixed;
+    position: fixed; /* Dodano kako se cijeli sadržaj ne bi micao dolje prilikom prelaska mišem */
 }
 
 nav a{
@@ -56,7 +93,6 @@ nav a{
     color: white;
     text-decoration: none;
     padding: 5px;
-    list-style-type: none;
 }
 
 nav a:hover {
@@ -82,6 +118,20 @@ nav a:hover {
     align-items: center;
     flex-wrap: wrap;
     margin-top: 20px;
+}
+
+aside img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: transform 0.3s ease-in-out;
+    display: block;
+    overflow: hidden;
+}
+
+aside img:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
 }
 
 /* Kružni grafikon - CSS samo */
@@ -187,6 +237,10 @@ tr:hover {background-color: coral;}
         align-items: center;
     }
 
+    .header {
+        max-width: 100%;
+    }
+
     .nav-menu {
         flex-direction: column;
         text-align: center;
@@ -194,5 +248,33 @@ tr:hover {background-color: coral;}
 
     .form-flex input, .form-flex button {
         width: 100%;
+    }
+
+    aside{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    table{
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .data-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+    }
+
+    aside {
+        width: 30%; /* Širina aside na desktopu */
+        padding: 10px;
+        margin-right: 55px;
     }
 }
